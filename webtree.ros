@@ -1,0 +1,23 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  #+quicklisp(ql:quickload '("cl-html5-parser") :silent t)
+  )
+
+(defpackage :ros.script.webtree.3909319694
+  (:use :cl))
+(in-package :ros.script.webtree.3909319694)
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (defvar file (nth 0 argv))
+  (print file)
+  (defvar HTMLFile (uiop:read-file-lines file))
+  (print HTMLFile)
+  )
+  
+;;; vim: set ft=lisp lisp:
